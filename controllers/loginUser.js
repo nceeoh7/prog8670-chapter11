@@ -10,8 +10,7 @@ module.exports = (req, res) => {
       //User found
       bcrypt.compare(password, user.password, (error, same) => {
         if (same) {
-          //Passwords match
-          //TODO:: implement session storage later
+          req.session.userId = user._id;
           console.log("Passwords match");
           res.redirect("/");
         } else {
